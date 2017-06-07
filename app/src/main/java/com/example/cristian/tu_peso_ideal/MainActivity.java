@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         botonIMC.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myintent = new Intent(MainActivity.this,CalcularIMC.class);
+                Intent myintent = new Intent(MainActivity.this,WebCalcularIMC.class);
                 startActivity(myintent);
             }
         });
