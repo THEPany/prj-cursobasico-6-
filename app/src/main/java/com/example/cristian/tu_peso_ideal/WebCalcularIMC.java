@@ -6,9 +6,8 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
+import android.widget.Toast;
 import java.text.DecimalFormat;
-import java.util.Random;
 
 public class WebCalcularIMC extends AppCompatActivity {
 
@@ -31,17 +30,84 @@ public class WebCalcularIMC extends AppCompatActivity {
         DecimalFormat d2f = new DecimalFormat("#.#");
 
         @JavascriptInterface
-        public  String GenerarPeso (double min, double max){
+        public  String CalcularIMC (double peso, double estatura){
+            Double imc = peso/(estatura*estatura);
+            if(imc < 18.5){
+                return "<strong style='color:#2196F3;'>Peso insuficiente " + d2f.format(imc) + "</strong>";
+            }else if (imc >= 18.5 && imc < 25){
+                return "<strong style='color:#4CAF50;'>Peso normal " + d2f.format(imc) + "</strong>";
+            }else if (imc >= 25 && imc < 27){
+                return "<strong style='color:#4CAF50;'>Puede haber sobrepeso grado I " + d2f.format(imc) + "</strong>";
+            }else if (imc >= 27 && imc < 30){
+                return "<strong style='color:#FF9800;'>Sobrepeso tipo I " + d2f.format(imc) + "</strong>";
+            }else if (imc >= 30 && imc < 35){
+                return "<strong style='color:#FF5722;'>Obesidad tipo I " + d2f.format(imc) + "</strong>";
+            }else if (imc >= 35 && imc < 40){
+                return "<strong style='color:#C62828;'>Obesidad tipo II " + d2f.format(imc) + "</strong>";
+            }else if (imc >= 40 && imc < 50){
+                return "<strong style='color:#B71C1C;'>Obesidad tipo III " + d2f.format(imc) + "</strong>";
+            }else if(imc >= 50) {
+                return "<strong style='color:#D50000;'>Obesidad extrema " + d2f.format(imc) + "</strong>";
+            }else{
+                return "Error IMC No definido" + d2f.format(imc);
+            }
+        }
+
+        @JavascriptInterface
+        public void getAlerta(){
+            Toast.makeText(WebCalcularIMC.this, "Debes rellanar todos los campos", Toast.LENGTH_LONG).show();
+        }
+
+        @JavascriptInterface
+        public String getAltura(){
             StringBuilder sb = new StringBuilder("<option value=\"0\" selected>Seleciona un valor</option>");
             String option;
-            if(min < max){
-                max += 0.1;
-                for (double i =  min; i <= max; i +=0.1f) {
-                    sb.append("<option value=\""+d2f.format(i)+"\">"+d2f.format(i)+"</option>");
-                }
-            }
-
+            sb.append("<option value=\"1.50\">1.50</option>\n" +
+                    "<option value=\"1.52\">1.52</option>\n" +
+                    "<option value=\"1.54\">1.54</option>\n" +
+                    "<option value=\"1.56\">1.56</option>\n" +
+                    "<option value=\"1.58\">1.58</option>\n" +
+                    "<option value=\"1.60\">1.60</option>\n" +
+                    "<option value=\"1.62\">1.62</option>\n" +
+                    "<option value=\"1.64\">1.64</option>\n" +
+                    "<option value=\"1.66\">1.66</option>\n" +
+                    "<option value=\"1.68\">1.68</option>\n" +
+                    "<option value=\"1.70\">1.70</option>\n" +
+                    "<option value=\"1.72\">1.72</option>\n" +
+                    "<option value=\"1.74\">1.74</option>\n" +
+                    "<option value=\"1.76\">1.76</option>\n" +
+                    "<option value=\"1.78\">1.78</option>\n" +
+                    "<option value=\"1.80\">1.80</option>\n" +
+                    "<option value=\"1.82\">1.82</option>\n" +
+                    "<option value=\"1.84\">1.84</option>\n" +
+                    "<option value=\"1.86\">1.86</option>\n" +
+                    "<option value=\"1.88\">1.88</option>\n" +
+                    "<option value=\"1.90\">1.90</option>\n" +
+                    "<option value=\"1.92\">1.92</option>\n" +
+                    "<option value=\"1.94\">1.94</option>");
             return option = sb.toString();
+
+        }
+
+        @JavascriptInterface
+        public String getComplexion(){
+            StringBuilder sb = new StringBuilder("<option value=\"0\" selected>Seleciona un valor</option>");
+            String option;
+            sb.append(" <option value=\"peq\">Pequeña</option>\n" +
+                    "<option value=\"med\">Mediana</option>\n" +
+                    "<option value=\"grand\">Grande</option>");
+            return option = sb.toString();
+
+        }
+
+        @JavascriptInterface
+        public String getGenero(){
+            StringBuilder sb = new StringBuilder("<option value=\"0\" selected>Seleciona un valor</option>");
+            String option;
+            sb.append("<option value=\"hombres\">Masculino</option>\n" +
+                      "<option value=\"mujeres\">Femenino</option>");
+            return option = sb.toString();
+
         }
 
     }
