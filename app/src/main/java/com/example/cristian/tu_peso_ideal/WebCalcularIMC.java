@@ -54,13 +54,13 @@ public class WebCalcularIMC extends AppCompatActivity {
         }
 
         @JavascriptInterface
-        public void getAlerta(){
-            Toast.makeText(WebCalcularIMC.this, "Debes rellanar todos los campos", Toast.LENGTH_LONG).show();
+        public void getAlerta(String valor){
+            Toast.makeText(WebCalcularIMC.this,"Debes llenar el campo" + valor, Toast.LENGTH_LONG).show();
         }
 
         @JavascriptInterface
         public String getAltura(){
-            StringBuilder sb = new StringBuilder("<option value=\"0\" selected>Seleciona un valor</option>");
+            StringBuilder sb = new StringBuilder("<option value=\"0\" selected></option>");
             String option;
             sb.append("<option value=\"1.50\">1.50</option>\n" +
                     "<option value=\"1.52\">1.52</option>\n" +
@@ -91,21 +91,21 @@ public class WebCalcularIMC extends AppCompatActivity {
 
         @JavascriptInterface
         public String getComplexion(){
-            StringBuilder sb = new StringBuilder("<option value=\"0\" selected>Seleciona un valor</option>");
+            StringBuilder sb = new StringBuilder("<label>Complexion</label><br>");
             String option;
-            sb.append(" <option value=\"peq\">Pequeña</option>\n" +
-                    "<option value=\"med\">Mediana</option>\n" +
-                    "<option value=\"grand\">Grande</option>");
+            sb.append("<label class=\"radio-inline\"><input type=\"radio\" name=\"complexion\" value=\"peq\">Pequeña</label>" +
+                    "<label class=\"radio-inline\"><input type=\"radio\" name=\"complexion\" value=\"med\">Mediana</label>" +
+                    "<label class=\"radio-inline\"><input type=\"radio\" name=\"complexion\" value=\"grand\">Grande</label>");
             return option = sb.toString();
 
         }
 
         @JavascriptInterface
         public String getGenero(){
-            StringBuilder sb = new StringBuilder("<option value=\"0\" selected>Seleciona un valor</option>");
+            StringBuilder sb = new StringBuilder("<label>Genero</label><br>");
             String option;
-            sb.append("<option value=\"hombres\">Masculino</option>\n" +
-                      "<option value=\"mujeres\">Femenino</option>");
+            sb.append("<label class=\"radio-inline\"><input type=\"radio\" name=\"genero\" value=\"hombres\">Masculino</label>\n" +
+                      "<label class=\"radio-inline\"><input type=\"radio\" name=\"genero\" value=\"mujeres\">Femenino</label>");
             return option = sb.toString();
 
         }
