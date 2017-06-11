@@ -5,31 +5,33 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container" style="padding-top: 50px; padding-bottom: 20px;">
+    <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <form name="FormIMC" id="FormIMC">
-                    <div class="form-group">
-                        <label>Genero</label>
-                        <select class="form-control" id="selectGenero" name="selectGenero">
-                        </select>
+                <div class="panel panel-default">
+                    <div class="panel-body" align="center">
+                        <form name="FormIMC" id="FormIMC" >
+                            <div class="form-group" id="genero">
+                            </div>
+                            <div class="form-group" id="complexion">
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label>Altura (Cm)</label>
+                                    <select class="form-control" id="selectAltura" name="selectAltura">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group Peso">
+                                    <label>Peso (Kg)</label>
+                                    <input class="form-control" id="Peso" type="number" step="0.01">
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-primary btn-block btnIMC">Calcular IMC</button>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label>Complexion</label>
-                        <select class="form-control" id="selectComplexion" name="selectComplexion">
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Altura (Cm)</label>
-                        <select class="form-control" id="selectAltura" name="selectAltura">
-                        </select>
-                    </div>
-                    <div class="form-group Peso">
-                            <label>Peso (Kg)</label>
-                            <input class="form-control" id="Peso" type="number" step="0.01">
-                    </div>
-                    <button type="button" class="btn btn-primary btnIMC">Calcular IMC</button>
-                </form>
+                </div>
             </div>
             <div class="col-xs-12">
                 <div class="contenidoIMC" align="center"></div>
@@ -39,46 +41,6 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/data.js"></script>
-    <script>
-    $( document ).ready(function() {
-        $('#selectGenero').append(window.android.getGenero());
-        $('#selectComplexion').append(window.android.getComplexion());
-        $('#selectAltura').append(window.android.getAltura());
-    });
-    $(".btnIMC").click(function(){
-        if(validar()){
-                genero = $('#selectGenero option:selected').val();
-                complexion = $('#selectComplexion option:selected').val();
-                altura = parseFloat($('#selectAltura option:selected').val());
-                peso = parseFloat($('#Peso').val());
-                min = parseFloat(myJson['datos'][genero][0][complexion][altura][0]['peso']);
-                max = parseFloat(myJson['datos'][genero][0][complexion][altura][1]['peso']);
-                $('.contenidoIMC').empty();
-                $('.contenidoIMC').append("<p style='color:#4CAF50;'>" + "Peso ideal segun tu complexión " + min + "-" + max + "</p>");
-                $('.contenidoIMC').append('<br>');
-                $('.contenidoIMC').append(window.android.CalcularIMC(peso,altura));
-                $('#FormIMC').fadeOut();
-                setTimeout(function(){ $('#FormIMC').fadeIn(); }, 6000);
-
-        }else{
-            window.android.getAlerta();
-        }
-
-    });
-
-    function validar(){
-        genero = $('#selectGenero option:selected').val();
-        complexion = $('#selectComplexion option:selected').val();
-        altura = $('#selectAltura option:selected').val();
-        peso =  $('#Peso').val();
-
-        if(genero != '0' && complexion != '0' && altura != '0' && peso.length > 0 && peso.length < 4){
-             return true;
-        }else{
-             return false;
-        }
-    }
-
-    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
