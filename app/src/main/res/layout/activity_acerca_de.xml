@@ -4,6 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.cristian.tu_peso_ideal.AcercaDe">
+    tools:context="com.example.cristian.tu_peso_ideal.AcercaDe"
+    android:orientation="vertical">
+
+
+
+
+        <TextView
+            android:orientation="vertical"
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Tu peso ideal"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="24dp"
+            tools:layout_editor_absoluteY="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:orientation="vertical"
+        android:layout_width="146dp"
+        android:layout_height="128dp"
+        android:src="@mipmap/logo_app_proyecto4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="29dp" />
+
 
 </android.support.constraint.ConstraintLayout>
