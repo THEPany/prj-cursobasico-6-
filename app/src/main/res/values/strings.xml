@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Tu Peso Ideal</string>
+    <string name="acercade_info">El IMC es preciso pero no para todos, sino para la mayoría de la gente. Puede sobreestimar la grasa corporal
+    si se es muy musculuso o atlético. Del mismo modo, si usted tiene baja masa muscular, se puede subestimar la grasa de su cuerpo y presentar
+    un bajo indice de masa corporal.</string>
+    <string name="acercade_info2">Esta herramienta no reemplaza la consulta médica acerca de problemas relacionados con su peso.</string>
+
 
     <string-array name="genero">
         <item>Hombre</item>

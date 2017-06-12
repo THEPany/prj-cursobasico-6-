@@ -1,36 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.cristian.tu_peso_ideal.AcercaDe"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#edecec"
+    android:padding="10dp"
+    >
 
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/border"
+        >
 
-        <TextView
-            android:orientation="vertical"
-            android:id="@+id/textView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Tu peso ideal"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textSize="24dp"
-            tools:layout_editor_absoluteY="0dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+    <TextView
+        android:layout_weight="10"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tu peso ideal"
+        android:gravity="center"
+        android:textSize="20sp"/>
+
 
     <ImageView
+        android:layout_marginTop="6dp"
+        android:layout_weight="30"
+        android:id="@+id/imageView2"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/logo_app" />
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_weight="50"
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/acercade_info"
+        />
+
+     <TextView
+         android:layout_marginTop="15sp"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="@string/acercade_info2"
+         android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/btn_acerca_imc"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mas info acerca del IMC"
+            android:background="#2b79c2"
+            android:textColor="#ffffff"
+            android:padding="5dp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp"
         android:orientation="vertical"
-        android:layout_width="146dp"
-        android:layout_height="128dp"
-        android:src="@mipmap/logo_app_proyecto4"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="29dp" />
+        android:gravity="center"
+        android:background="@drawable/border"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Acerca de"
+            android:textSize="20sp"
+            android:textColor="#2b79c2"/>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Versión 1.2"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/btn_creditos"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Créditos"
+            android:textColor="#43ca6c"
+            android:textSize="20sp"
+            android:clickable="true"/>
+
+    </LinearLayout>
 
 
-</android.support.constraint.ConstraintLayout>
+
+
+</LinearLayout>
