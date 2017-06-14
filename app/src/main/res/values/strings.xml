@@ -4,41 +4,4 @@
     si se es muy musculuso o atlético. Del mismo modo, si usted tiene baja masa muscular, se puede subestimar la grasa de su cuerpo y presentar
     un bajo indice de masa corporal.</string>
     <string name="acercade_info2">Esta herramienta no reemplaza la consulta médica acerca de problemas relacionados con su peso.</string>
-
-
-    <string-array name="genero">
-        <item>Hombre</item>
-        <item>Mujer</item>
-    </string-array>
-
-    <string-array name="complexion">
-        <item>Pequeña</item>
-        <item>Mediana</item>
-        <item>Grande</item>
-    </string-array>
-
-    <string-array name="altura">
-        <item>1.50</item>
-        <item>1.52</item>
-        <item>1.54</item>
-        <item>1.56</item>
-        <item>1.58</item>
-        <item>1.60</item>
-        <item>1.62</item>
-        <item>1.64</item>
-        <item>1.66</item>
-        <item>1.66</item>
-        <item>1.70</item>
-        <item>1.72</item>
-        <item>1.74</item>
-        <item>1.76</item>
-        <item>1.78</item>
-        <item>1.80</item>
-        <item>1.82</item>
-        <item>1.84</item>
-        <item>1.86</item>
-        <item>1.88</item>
-        <item>1.90</item>
-        <item>1.94</item>
-    </string-array>
 </resources>

@@ -24,6 +24,7 @@ public class WebCalcularIMC extends AppCompatActivity {
         view.loadUrl("file:///android_asset/index.html");
         view.addJavascriptInterface(intermediary,"android");
         setContentView(view);
+
     }
 
     class Intermediary {
@@ -33,21 +34,21 @@ public class WebCalcularIMC extends AppCompatActivity {
         public  String CalcularIMC (double peso, double estatura){
             Double imc = peso/(estatura*estatura);
             if(imc < 18.5){
-                return "<strong style='color:#2196F3;'>Peso insuficiente " + d2f.format(imc) + "</strong>";
+                return "<img src=\"img/PesoInsuficiente.png\" class=\"img-responsive\" ><br><strong style='color:#2196F3;'>Peso insuficiente " + d2f.format(imc) + " imc</strong>";
             }else if (imc >= 18.5 && imc < 25){
-                return "<strong style='color:#4CAF50;'>Peso normal " + d2f.format(imc) + "</strong>";
+                return "<img src=\"img/PesoNormal.png\" class=\"img-responsive\" ><br><strong style='color:#4CAF50;'>Peso normal " + d2f.format(imc) + " imc</strong>";
             }else if (imc >= 25 && imc < 27){
-                return "<strong style='color:#4CAF50;'>Puede haber sobrepeso grado I " + d2f.format(imc) + "</strong>";
+                return "<img src=\"img/PesoSP1.png\" class=\"img-responsive\" ><br><strong style='color:#4CAF50;'>Puede haber sobrepeso grado I " + d2f.format(imc) + " imc</strong>";
             }else if (imc >= 27 && imc < 30){
-                return "<strong style='color:#FF9800;'>Sobrepeso tipo I " + d2f.format(imc) + "</strong>";
+                return "<img src=\"img/PesoSP1.png\" class=\"img-responsive\" ><br><strong style='color:#FF9800;'>Sobrepeso tipo I " + d2f.format(imc) + " imc</strong>";
             }else if (imc >= 30 && imc < 35){
-                return "<strong style='color:#FF5722;'>Obesidad tipo I " + d2f.format(imc) + "</strong>";
+                return "<img src=\"img/PesoSP2.png\" class=\"img-responsive\" ><br><strong style='color:#FF5722;'>Obesidad tipo I " + d2f.format(imc) + " imc</strong>";
             }else if (imc >= 35 && imc < 40){
-                return "<strong style='color:#C62828;'>Obesidad tipo II " + d2f.format(imc) + "</strong>";
+                return "<img src=\"img/PesoSP2.png\" class=\"img-responsive\" ><br><strong style='color:#C62828;'>Obesidad tipo II " + d2f.format(imc) + " imc</strong>";
             }else if (imc >= 40 && imc < 50){
-                return "<strong style='color:#B71C1C;'>Obesidad tipo III " + d2f.format(imc) + "</strong>";
+                return "<img src=\"img/PesoSP2.png\" class=\"img-responsive\" ><br><strong style='color:#B71C1C;'>Obesidad tipo III " + d2f.format(imc) + " imc</strong>";
             }else if(imc >= 50) {
-                return "<strong style='color:#D50000;'>Obesidad extrema " + d2f.format(imc) + "</strong>";
+                return "<img src=\"img/ObesidadExtrema.png\" class=\"img-responsive\" ><br><strong style='color:#D50000;'>Obesidad extrema " + d2f.format(imc) + " imc</strong>";
             }else{
                 return "Error IMC No definido" + d2f.format(imc);
             }
@@ -55,7 +56,7 @@ public class WebCalcularIMC extends AppCompatActivity {
 
         @JavascriptInterface
         public void getAlerta(String valor){
-            Toast.makeText(WebCalcularIMC.this,"Debes llenar el campo" + valor, Toast.LENGTH_LONG).show();
+            Toast.makeText(WebCalcularIMC.this,"Debes llenar el campo " + valor, Toast.LENGTH_LONG).show();
         }
 
         @JavascriptInterface
@@ -104,8 +105,8 @@ public class WebCalcularIMC extends AppCompatActivity {
         public String getGenero(){
             StringBuilder sb = new StringBuilder("<label>Genero</label><br>");
             String option;
-            sb.append("<label class=\"radio-inline\"><input type=\"radio\" name=\"genero\" value=\"hombres\">Masculino</label>\n" +
-                      "<label class=\"radio-inline\"><input type=\"radio\" name=\"genero\" value=\"mujeres\">Femenino</label>");
+            sb.append("<label class=\"radio-inline\"><input type=\"radio\" name=\"genero\" value=\"hombres\"><img src=\"img/Man.png\"  class=\"img-rounded\"  width=\"100\" height=\"100\"></label>\n" +
+                      "<label class=\"radio-inline\"><input type=\"radio\" name=\"genero\" value=\"mujeres\"><img src=\"img/Woman.png\"  class=\"img-rounded\"  width=\"100\" height=\"100\"></label>");
             return option = sb.toString();
 
         }

@@ -2,6 +2,5 @@
 <resources>
     <color name="colorPrimary">#fcf49a</color>
     <color name="colorPrimaryDark">#2b79c2</color>
-    <color name="colorAccent">#fcf49a</color>
-
+    <color name="colorAccent">#01579B</color>
 </resources>

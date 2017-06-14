@@ -12,7 +12,7 @@
                 min = parseFloat(myJson['datos'][genero][0][complexion][altura][0]['peso']);
                 max = parseFloat(myJson['datos'][genero][0][complexion][altura][1]['peso']);
                 $('.contenidoIMC').empty();
-                $('.contenidoIMC').append("<p style='color:#4CAF50;'>" + "Peso ideal segun tu complexion " + min + " - " + max + "</p>");
+                $('.contenidoIMC').append("<p style='color:#4CAF50;'>" + "Peso ideal segun tu complexion " + min + " - " + max + " kg</p>");
                 $('.contenidoIMC').append('<br>');
                 $('.contenidoIMC').append(window.android.CalcularIMC(peso,altura));
                 $('.panel').fadeOut();
