@@ -1,0 +1,15 @@
+body{
+  text-align: center;
+  background:white;
+}
+
+
+.formula{
+  margin: 30px;
+  border-radius: 5px;
+  border: 1px solid;
+}
+
+.formula p{
+  color: black;
+}

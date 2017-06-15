@@ -41,14 +41,9 @@ public class AcercaDe extends AppCompatActivity {
                 WebView view = new WebView(context);
                 WebSettings settings = view.getSettings();
                 settings.setJavaScriptEnabled(true);
-                settings.setAppCacheEnabled(true);
-                settings.setDatabaseEnabled(true);
                 settings.setSupportZoom(true);
-                settings.setBuiltInZoomControls(true);
-                settings.setJavaScriptCanOpenWindowsAutomatically(true);
-                settings.setDomStorageEnabled(true);
                 view.setScrollBarStyle(view.SCROLLBARS_INSIDE_OVERLAY);
-                view.loadUrl("https://es.wikipedia.org/wiki/%C3%8Dndice_de_masa_corporal");
+                view.loadUrl("file:///android_asset/imc_info.html");
                 view.setWebViewClient(new WebViewClient());
                 setContentView(view);
 

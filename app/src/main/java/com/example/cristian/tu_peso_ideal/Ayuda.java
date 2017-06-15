@@ -38,7 +38,7 @@ public class Ayuda extends AppCompatActivity {
         settings.setJavaScriptCanOpenWindowsAutomatically(true);
         settings.setDomStorageEnabled(true);
         view.setScrollBarStyle(view.SCROLLBARS_INSIDE_OVERLAY);
-        view.loadUrl("https://www.vitonica.com/anatomia/todo-sobre-el-indice-de-masa-corporal-y-el-de-grasa");
+        view.loadUrl("file:///android_asset/acerca_del_imc.html");
         view.setWebViewClient(new WebViewClient());
         setContentView(view);
 
