@@ -11,9 +11,8 @@ import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageButton botonIMC;
-    ImageButton botonAyuda;
-    ImageButton botonAcercaDe;
+    ImageButton botonIMC,botonAyuda,botonAcercaDe;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
