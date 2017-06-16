@@ -49,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /*
+    * Al Precionar el Atras, preguntar si desea salir de la aplicacion
+    * */
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
