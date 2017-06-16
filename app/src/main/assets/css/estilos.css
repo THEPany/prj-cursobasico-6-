@@ -1,9 +1,16 @@
+/*=============================
+Diseño body
+==============================*/
 body{
+  background-image: url("../img/geometry.png");
   text-align: center;
-  background:white;
+  font-size: 20px;
+  color: black;
 }
 
-
+/*=============================
+Diseño de formula
+==============================*/
 .formula{
   margin: 30px;
   border-radius: 5px;
@@ -13,3 +20,35 @@ body{
 .formula p{
   color: black;
 }
+
+/*=============================
+Diseño de texto
+==============================*/
+p {
+    font-weight: lighter;
+}
+
+/*=============================
+Diseñoo de etiquetas H1,H2,H3,H4
+==============================*/
+h1{
+	margin: 1em 0 0.5em 0;
+	font-weight: 100;
+	text-transform: uppercase;
+	color: #2196f3;
+	font-style: italic;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 58px;
+	line-height: 54px;
+	text-shadow: 2px 5px 0 rgba(0,0,0,0.2);
+}
+
+h2,h3,h4{
+    margin: 1em 0 0.5em 0;
+	font-weight: 400;
+	text-transform: uppercase;
+	color: #2196f3;
+	font-style: italic;
+	font-family: 'Josefin Sans', sans-serif;
+    
+} 

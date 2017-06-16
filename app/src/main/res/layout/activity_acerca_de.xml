@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     tools:context="com.example.cristian.tu_peso_ideal.AcercaDe"
     android:orientation="vertical"
-    android:background="#edecec"
+    android:background="@drawable/geometry"
+    android:scaleType = "centerCrop"
     android:padding="10dp">
 
 

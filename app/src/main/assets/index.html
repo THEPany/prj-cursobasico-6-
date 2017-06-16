@@ -1,25 +1,32 @@
 <html>
 <head>
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Estilos bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Estilos personalisado -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Contenido -->
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Indice de masa corporal (IMC)</h3>
+                        <h3 class="panel-title">Indice de masa corporal (IMC) <a href="acerca_del_imc.html"><span class="label label-default">?</span></a></h3>
                     </div>
                     <div class="panel-body" align="center">
                         <form name="FormIMC" id="FormIMC" >
+                            <!-- Genero radio button -->
                             <div class="form-group" id="genero">
                             </div>
+                            <!-- end -->
                             <br>
+                            <!-- Complexion radio button -->
                             <div class="form-group" id="complexion">
                             </div>
+                            <!-- end -->
                             <br>
+                            <!-- Dividdir la columna en 2 con un tamano de 6/12-->
                             <div class="col-xs-6">
                                 <div class="form-group">
                                     <label>Altura (Cm)</label>
@@ -27,25 +34,33 @@
                                     </select>
                                 </div>
                             </div>
+                            <!-- end -->
+                            <!-- Dividdir la columna en 2 con un tamano de 6/12-->
                             <div class="col-xs-6">
                                 <div class="form-group Peso">
                                     <label>Peso (Kg)</label>
                                     <input class="form-control" id="Peso" type="number" step="0.01">
                                 </div>
                             </div>
+                            <!-- end -->
+                            <!-- btn para calcular el imc -->
                             <button type="button" class="btn btn-primary btn-block btnIMC">Calcular IMC</button>
                         </form>
                     </div>
                 </div>
             </div>
+            <!-- Caja (Div) donde se mostrara el contenido -->
             <div class="col-xs-12">
                 <div class="contenidoIMC" align="center"></div>
             </div>
         </div>
     </div>
+    <!-- Fin contenido -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <!-- data.js, donde se encuentra  array json con los datos de peso ideal segun la altura y complexion recomendadas -->
     <script src="js/data.js"></script>
+    <!-- script.js, donde esta parte de la programacion de la app-->
     <script src="js/script.js"></script>
 </body>
 </html>

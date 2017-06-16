@@ -22,24 +22,18 @@ public class Ayuda extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         final Context context = this;
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // para que la pantalla no se voltee
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acerca_de);
-
+        /*Inicio WebView*/
         view = (WebView) findViewById(R.id.wview);
-
         WebView view = new WebView(context);
         WebSettings settings = view.getSettings();
-        settings.setJavaScriptEnabled(true);
-        settings.setAppCacheEnabled(true);
-        settings.setDatabaseEnabled(true);
-        settings.setSupportZoom(true);
-        settings.setBuiltInZoomControls(true);
+        settings.setJavaScriptEnabled(true); // Habilitar JavaScript
         settings.setJavaScriptCanOpenWindowsAutomatically(true);
-        settings.setDomStorageEnabled(true);
-        view.setScrollBarStyle(view.SCROLLBARS_INSIDE_OVERLAY);
-        view.loadUrl("file:///android_asset/acerca_del_imc.html");
-        view.setWebViewClient(new WebViewClient());
+        view.setScrollBarStyle(view.SCROLLBARS_INSIDE_OVERLAY); // Habilitar Scrollbar
+        view.loadUrl("file:///android_asset/acerca_del_imc.html"); // Ruta
+        view.setWebViewClient(new WebViewClient()); //Instanciar cliente web
         setContentView(view);
 
     }

@@ -1,5 +1,6 @@
 package com.example.cristian.tu_peso_ideal;
 
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.JavascriptInterface;
@@ -14,22 +15,24 @@ public class WebCalcularIMC extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Intermediary intermediary = new Intermediary();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_calcular_imc);
-
+        /*Inicio WebView*/
         WebView view = new WebView(this);
-        view.getSettings().setJavaScriptEnabled(true);
-        view.setWebViewClient(new WebViewClient());
-        view.setWebChromeClient(new WebChromeClient());
-        view.loadUrl("file:///android_asset/index.html");
-        view.addJavascriptInterface(intermediary,"android");
-        setContentView(view);
+        view.getSettings().setJavaScriptEnabled(true); //Habilitar JavaScript
+        view.setWebViewClient(new WebViewClient()); //Instanciar WebCliente
+        view.loadUrl("file:///android_asset/index.html"); //Ruta de los recursos
+        view.addJavascriptInterface(intermediary,"android"); // Clase Java que se añade a la interfaceJavaScript
+        setContentView(view); // Pintar el contenido
 
     }
-
+    /*
+    Clase que se usa para comunicarse con javascript
+     */
     class Intermediary {
         DecimalFormat d2f = new DecimalFormat("#.#");
-
+        //Retorna los calculos del IMC
         @JavascriptInterface
         public  String CalcularIMC (double peso, double estatura){
             Double imc = peso/(estatura*estatura);
@@ -53,12 +56,12 @@ public class WebCalcularIMC extends AppCompatActivity {
                 return "Error IMC No definido" + d2f.format(imc);
             }
         }
-
+        //Retorna la informacion del campo que debe ser completado
         @JavascriptInterface
         public void getAlerta(String valor){
             Toast.makeText(WebCalcularIMC.this,"Debes llenar el campo " + valor, Toast.LENGTH_LONG).show();
         }
-
+        //Retorna los valores de la altura
         @JavascriptInterface
         public String getAltura(){
             StringBuilder sb = new StringBuilder("<option value=\"0\" selected></option>");
@@ -89,7 +92,7 @@ public class WebCalcularIMC extends AppCompatActivity {
             return option = sb.toString();
 
         }
-
+        //Retorna los valores de la complexion
         @JavascriptInterface
         public String getComplexion(){
             StringBuilder sb = new StringBuilder("<label>Complexion</label><br>");
@@ -100,7 +103,7 @@ public class WebCalcularIMC extends AppCompatActivity {
             return option = sb.toString();
 
         }
-
+        //Retorna los valores del genero
         @JavascriptInterface
         public String getGenero(){
             StringBuilder sb = new StringBuilder("<label>Genero</label><br>");
