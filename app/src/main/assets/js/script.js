@@ -62,6 +62,11 @@ Funcion validar, para verificar que todos los campos hayan sidos selecionados o 
             window.android.getAlerta("Peso");
             return false;
         }
+
+        if(peso.length >= 4){
+            window.android.getAlerta("Peso, y este debe ser menos a 999");
+            return false;
+        }
         
         return true;
         

@@ -15,8 +15,8 @@ public class WebCalcularIMC extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Intermediary intermediary = new Intermediary();
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        Intermediary intermediary = new Intermediary(); // instancia de la clase intermediaria para JS
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // No permite que la pantalla se voltee
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_calcular_imc);
         /*Inicio WebView*/
@@ -41,34 +41,35 @@ public class WebCalcularIMC extends AppCompatActivity {
         //Retorna los calculos del IMC
         @JavascriptInterface
         public  String CalcularIMC (double peso, double estatura){
+            // Verificar si hay una instancia de decimallformat
             if(d2f == null){
                 d2f = new DecimalFormat("#.#");
             }
             Double imc = peso/(estatura*estatura);
             if(imc < 18.5){
                 sonidos(1);
-                return "<img src=\"img/PesoInsuficiente.png\" class=\"img-responsive\" ><br><strong style='color:#2196F3;'>Peso insuficiente " + d2f.format(imc) + " imc</strong>";
+                return "<img src=\"img/Pinsuficiente.png\" class=\"img-responsive\" ><br><strong style='color:#2196F3;'>Peso insuficiente " + d2f.format(imc) + " imc</strong>";
             }else if (imc >= 18.5 && imc < 25){
                 sonidos(2);
-                return "<img src=\"img/PesoNormal.png\" class=\"img-responsive\" ><br><strong style='color:#4CAF50;'>Peso normal " + d2f.format(imc) + " imc</strong>";
+                return "<img src=\"img/Pnormal.png\" class=\"img-responsive\" ><br><strong style='color:#4CAF50;'>Peso normal " + d2f.format(imc) + " imc</strong>";
             }else if (imc >= 25 && imc < 27){
                 sonidos(3);
-                return "<img src=\"img/PesoSP1.png\" class=\"img-responsive\" ><br><strong style='color:#4CAF50;'>Puede haber sobrepeso grado I " + d2f.format(imc) + " imc</strong>";
+                return "<img src=\"img/Sobrepeso1.png\" class=\"img-responsive\" ><br><strong style='color:#FFC107;'>Puede haber sobrepeso grado I " + d2f.format(imc) + " imc</strong>";
             }else if (imc >= 27 && imc < 30){
                 sonidos(4);
-                return "<img src=\"img/PesoSP1.png\" class=\"img-responsive\" ><br><strong style='color:#FF9800;'>Sobrepeso tipo I " + d2f.format(imc) + " imc</strong>";
+                return "<img src=\"img/Sobrepeso2.png\" class=\"img-responsive\" ><br><strong style='color:#FF9800;'>Sobrepeso tipo I " + d2f.format(imc) + " imc</strong>";
             }else if (imc >= 30 && imc < 35){
                 sonidos(5);
-                return "<img src=\"img/PesoSP2.png\" class=\"img-responsive\" ><br><strong style='color:#FF5722;'>Obesidad tipo I " + d2f.format(imc) + " imc</strong>";
+                return "<img src=\"img/obesidad1.png\" class=\"img-responsive\" ><br><strong style='color:#FF5722;'>Obesidad tipo I " + d2f.format(imc) + " imc</strong>";
             }else if (imc >= 35 && imc < 40){
                 sonidos(6);
-                return "<img src=\"img/PesoSP2.png\" class=\"img-responsive\" ><br><strong style='color:#C62828;'>Obesidad tipo II " + d2f.format(imc) + " imc</strong>";
+                return "<img src=\"img/obesidad2.png\" class=\"img-responsive\" ><br><strong style='color:#C62828;'>Obesidad tipo II " + d2f.format(imc) + " imc</strong>";
             }else if (imc >= 40 && imc < 50){
                 sonidos(7);
-                return "<img src=\"img/PesoSP2.png\" class=\"img-responsive\" ><br><strong style='color:#B71C1C;'>Obesidad tipo III " + d2f.format(imc) + " imc</strong>";
+                return "<img src=\"img/obesidad3.png\" class=\"img-responsive\" ><br><strong style='color:#B71C1C;'>Obesidad tipo III " + d2f.format(imc) + " imc</strong>";
             }else if(imc >= 50) {
                 sonidos(8);
-                return "<img src=\"img/ObesidadExtrema.png\" class=\"img-responsive\" ><br><strong style='color:#D50000;'>Obesidad extrema " + d2f.format(imc) + " imc</strong>";
+                return "<img src=\"img/ObesidadE.png\" class=\"img-responsive\" ><br><strong style='color:#D50000;'>Obesidad extrema " + d2f.format(imc) + " imc</strong>";
             }else{
                 sonidos(9);
                 return "Error IMC No definido" + d2f.format(imc);
@@ -134,19 +135,22 @@ public class WebCalcularIMC extends AppCompatActivity {
 
         @JavascriptInterface
         public void sonidos(int numero){
+            // Verificar si hay una instancia de soundpool
             if (soundPool == null){
+                // Carga el sonido desde el archivo raw
                 soundPool = new SoundPool(9, AudioManager.STREAM_MUSIC, 0);
                 pbajo = soundPool.load(WebCalcularIMC.this, R.raw.p_bajo, 1);
                 pnormal = soundPool.load(WebCalcularIMC.this, R.raw.s_normal, 1);
                 sgrado1 = soundPool.load(WebCalcularIMC.this, R.raw.s_grado1, 1);
                 speso1 = soundPool.load(WebCalcularIMC.this, R.raw.sobre_p1, 1);
-                ob1 = soundPool.load(WebCalcularIMC.this, R.raw.s_normal, 1);
+                ob1 = soundPool.load(WebCalcularIMC.this, R.raw.obesidad1, 1);
                 ob2 = soundPool.load(WebCalcularIMC.this, R.raw.obesidad2, 1);
                 ob3 = soundPool.load(WebCalcularIMC.this, R.raw.obesidad3, 1);
                 obe = soundPool.load(WebCalcularIMC.this, R.raw.obesidade, 1);
                 serror = soundPool.load(WebCalcularIMC.this, R.raw.error, 1);
             }
             switch (numero){
+                //Reproduce el sonido segun el caso
                 case 1:
                     soundPool.play(pbajo,1,1,0,0,1);
                     break;
