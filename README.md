@@ -6,4 +6,4 @@ Despues de ingresar los datos, segun el imc dado, se clasificará en uno de los 
 La app recomendará el peso ideal de acuerdo a los datos previamente introducidos.
 
 
-**desarrollado por Cristian Gómez y Julio Delgado **
+Desarrollado por Cristian Gómez y Julio Delgado 
