@@ -1,10 +1,11 @@
 package com.example.cristian.tu_peso_ideal;
 
 import android.content.pm.ActivityInfo;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.JavascriptInterface;
-import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
@@ -27,32 +28,49 @@ public class WebCalcularIMC extends AppCompatActivity {
         setContentView(view); // Pintar el contenido
 
     }
+
+
+
     /*
     Clase que se usa para comunicarse con javascript
      */
     class Intermediary {
-        DecimalFormat d2f = new DecimalFormat("#.#");
+        DecimalFormat d2f;
+        SoundPool soundPool;
+        int pbajo, pnormal, sgrado1, speso1, ob1, ob2, ob3, obe, serror;
         //Retorna los calculos del IMC
         @JavascriptInterface
         public  String CalcularIMC (double peso, double estatura){
+            if(d2f == null){
+                d2f = new DecimalFormat("#.#");
+            }
             Double imc = peso/(estatura*estatura);
             if(imc < 18.5){
+                sonidos(1);
                 return "<img src=\"img/PesoInsuficiente.png\" class=\"img-responsive\" ><br><strong style='color:#2196F3;'>Peso insuficiente " + d2f.format(imc) + " imc</strong>";
             }else if (imc >= 18.5 && imc < 25){
+                sonidos(2);
                 return "<img src=\"img/PesoNormal.png\" class=\"img-responsive\" ><br><strong style='color:#4CAF50;'>Peso normal " + d2f.format(imc) + " imc</strong>";
             }else if (imc >= 25 && imc < 27){
+                sonidos(3);
                 return "<img src=\"img/PesoSP1.png\" class=\"img-responsive\" ><br><strong style='color:#4CAF50;'>Puede haber sobrepeso grado I " + d2f.format(imc) + " imc</strong>";
             }else if (imc >= 27 && imc < 30){
+                sonidos(4);
                 return "<img src=\"img/PesoSP1.png\" class=\"img-responsive\" ><br><strong style='color:#FF9800;'>Sobrepeso tipo I " + d2f.format(imc) + " imc</strong>";
             }else if (imc >= 30 && imc < 35){
+                sonidos(5);
                 return "<img src=\"img/PesoSP2.png\" class=\"img-responsive\" ><br><strong style='color:#FF5722;'>Obesidad tipo I " + d2f.format(imc) + " imc</strong>";
             }else if (imc >= 35 && imc < 40){
+                sonidos(6);
                 return "<img src=\"img/PesoSP2.png\" class=\"img-responsive\" ><br><strong style='color:#C62828;'>Obesidad tipo II " + d2f.format(imc) + " imc</strong>";
             }else if (imc >= 40 && imc < 50){
+                sonidos(7);
                 return "<img src=\"img/PesoSP2.png\" class=\"img-responsive\" ><br><strong style='color:#B71C1C;'>Obesidad tipo III " + d2f.format(imc) + " imc</strong>";
             }else if(imc >= 50) {
+                sonidos(8);
                 return "<img src=\"img/ObesidadExtrema.png\" class=\"img-responsive\" ><br><strong style='color:#D50000;'>Obesidad extrema " + d2f.format(imc) + " imc</strong>";
             }else{
+                sonidos(9);
                 return "Error IMC No definido" + d2f.format(imc);
             }
         }
@@ -112,6 +130,51 @@ public class WebCalcularIMC extends AppCompatActivity {
                       "<label class=\"radio-inline\"><input type=\"radio\" name=\"genero\" value=\"mujeres\"><img src=\"img/Woman.png\"  class=\"img-rounded\"  width=\"100\" height=\"100\"></label>");
             return option = sb.toString();
 
+        }
+
+        @JavascriptInterface
+        public void sonidos(int numero){
+            if (soundPool == null){
+                soundPool = new SoundPool(9, AudioManager.STREAM_MUSIC, 0);
+                pbajo = soundPool.load(WebCalcularIMC.this, R.raw.p_bajo, 1);
+                pnormal = soundPool.load(WebCalcularIMC.this, R.raw.s_normal, 1);
+                sgrado1 = soundPool.load(WebCalcularIMC.this, R.raw.s_grado1, 1);
+                speso1 = soundPool.load(WebCalcularIMC.this, R.raw.sobre_p1, 1);
+                ob1 = soundPool.load(WebCalcularIMC.this, R.raw.s_normal, 1);
+                ob2 = soundPool.load(WebCalcularIMC.this, R.raw.obesidad2, 1);
+                ob3 = soundPool.load(WebCalcularIMC.this, R.raw.obesidad3, 1);
+                obe = soundPool.load(WebCalcularIMC.this, R.raw.obesidade, 1);
+                serror = soundPool.load(WebCalcularIMC.this, R.raw.error, 1);
+            }
+            switch (numero){
+                case 1:
+                    soundPool.play(pbajo,1,1,0,0,1);
+                    break;
+                case 2:
+                    soundPool.play(pnormal,1,1,0,0,1);
+                    break;
+                case 3:
+                    soundPool.play(sgrado1,1,1,0,0,1);
+                    break;
+                case 4:
+                    soundPool.play(speso1,1,1,0,0,1);
+                    break;
+                case 5:
+                    soundPool.play(ob1,1,1,0,0,1);
+                    break;
+                case 6:
+                    soundPool.play(ob2,1,1,0,0,1);
+                    break;
+                case 7:
+                    soundPool.play(ob3,1,1,0,0,1);
+                    break;
+                case 8:
+                    soundPool.play(obe,1,1,0,0,1);
+                    break;
+                default:
+                    soundPool.play(serror,1,1,0,0,1);
+                    break;
+            }
         }
 
     }
